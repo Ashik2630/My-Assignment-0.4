@@ -146,8 +146,8 @@ mainContainer.addEventListener("click", function (event) {
     const interviewBtn = parentNode.querySelector(".interview-btn").innerText;
     const rejectedBtn = parentNode.querySelector(".rejected-btn").innerText;
 
-    parentNode.querySelector(".status").innerHtml = `
-      <p class="interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md"> Rejected </p>`;
+    parentNode.querySelector(".status").innerHTML = `
+      <button class="rejected-btn text-[15px] uppercase  font-bold border border-[#EF4444] px-4 py-2 text-[#EF4444] shadow rounded-md">Rejected</button>`;
 
     const cardInfo = {
       companyName,
@@ -211,7 +211,7 @@ function renderInterview() {
             <p class="companySalary text-[#64748B]">
               ${interview.companySalary}
             </p>
-            <button class="status bg-[#EEF4FF] ml-2 mt-5 ">
+            <button  class="status interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md">
               ${interview.status}
             </button>
             <p  class="notes mt-2 text-[#323B49]">
@@ -271,7 +271,7 @@ function renderRejected() {
             <p class="companySalary text-[#64748B]">
               ${rejected.companySalary}
             </p>
-            <button class="status bg-[#EEF4FF] px-2 py-2 ml-2 mt-5">
+            <button  class="status rejected-btn text-[15px] uppercase  font-bold border border-[#EF4444] px-4 py-2 text-[#EF4444] shadow rounded-md">
               ${rejected.status}
             </button>
             <p  class="notes mt-2 text-[#323B49]">
@@ -281,12 +281,12 @@ function renderRejected() {
               <p
                 class="interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md"
               >
-                Interview
+                 ${rejected.interviewBtn}
               </p>
               <button
                 class="rejected-btn text-[15px] uppercase  font-bold border border-[#EF4444] px-4 py-2 text-[#EF4444] shadow rounded-md"
               >
-                Rejected
+                ${rejected.rejectedBtn}
               </button>
             </div>
           </div>
