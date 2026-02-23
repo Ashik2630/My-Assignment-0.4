@@ -34,5 +34,5 @@ Answer:preventDefault() হল কোন উপাদানের ডিফল�
 - JavaScript (Vanilla) 
 
 
-### GitHub Repository Link:
-### Live Site Link:
+### GitHub Repository Link: https://github.com/Ashik2630/My-Assignment-0.4
+### Live Site Link: https://ashik2630.github.io/My-Assignment-0.4/
