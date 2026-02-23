@@ -1,83 +1,38 @@
-## Welcome To ( সহজ সরল সিম্পল ) Assignment - 4 
-
-
----
-# 📅 Deadline For 60 marks: 23th February, 2026 (11:59 pm ⏱️)
-# 📅 Deadline For 50 marks: 24th February, 2026 (11:59 pm ⏱️)
-# 📅 Deadline For 30 marks: Any time after 24th February.
-
-
-# Main Requirements
-
-## Design Part
-
-## Dashboard
-- Website name and Create a dashboard like figma 
-- The section should be responsive for mobile devices. It is totally up to you. 
-
-## Available Jobs Section
-- A title on the left side, jobs count on the right side 
-- 3 different tab  below the section title 
-- Minimum 8 cards with:
-	- companyName
-	- position
-	- location
-	- type
-	- salary
-	- description
-	- 2 buttons: Interview, Rejected
-- By default all the jobs data will show on All tab, and the Interview, Rejected tab will show “No jobs Available” message with a subtitle below and an icon/image on the above
-
-- The section should be responsive for mobile devices. It is totally up to you.
-
---- 
-
-## Functionalities Part
-- Clicking on Interview button on the card 
-    - will add the data on Interview tab 
-    - add the status as Interview.
-    - Will increase the the count of interview in Dashboard 
-
-- Clicking on Rejected button on the card 
-    - will add the data on Rejected tab 
-    - add the status as Rejected.
-    - Will increase the the count of Rejected in Dashboard
-
-- Enable toggle between Interview and rejected button(you can select Rejected button after clicking on Interview, and Interview button after clicking on Rejected button). It will change the tab and dashboard count also. It will show tab wise jobs count on the right.
-
----
-
-# Challenges Requirements
-- Clicking on the delete button will remove that card from the UI, and the count will be deducted from the dashboard card and the main section.
-- No lorem ipsum text on your website. At least 8 meaningful commits in your project.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-
+## Welcome To  Assignment - 4 
 
 ## Answers to Questions
 
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
+Answer: getElementById হল  যা  দিয়ে একটি সিঙ্গেল এলিমেন্টকে গেট করে কাজ করা হয় এবং getElementsByClassName যেটা দিয়ে অনেকগুলি ট্যাগকে একসাথে ধরে এনে কোন ফাংশন অথবা কাজ করা হয় এবং querySelector হল কোন ট্যাগ ধরে আনার জন্য যখন আমরা ব্যবহার করি এবং querySelectorAll যেটা দিয়ে অনেকগুলি ট্যাগকে একসাথে ধরে এনে কোন ফাংশন করা হয়.
+-------------------------------------------------------------------------------------------------------
+
 ### 2. How do you create and insert a new element into the DOM?
+
+Answer:যখন DOM ইউজ করে একটি এলিমেন্ট তৈরি করতে হয় তখন আমরা ব্যবহার করি ক্রিয়েট গেট  এলিমেন্ট এবং এর মাধ্যমে একটি ভার্চুয়াল DOM তৈরি হয় এবং এটি দেখানোর জন্য আমাদেরকে Append চাইল্ড করতে হয় পেরেন্টের কাছে এভাবেই একটি ভার্চুয়াল ড্রম তৈরি করা হয়.
+-------------------------------------------------------------------------------------------------------
 
 ### 3. What is Event Bubbling? And how does it work?
 
+Answer:ইভেন্ট ডাবলিং হলো একটি ডম ইভেন্ট যার মাধ্যমে একটি ইভেন্ট কে লক্ষ্য করে উপাদান থেকে শুরু হয় এবং তারপর মূল উপাদান গুলির মাধ্যমে উপরের দিকে উঠতে থাকে ডকুমেন্ট পর্যন্ত পৌঁছায় এবং এটা কাজ করার জন্য আবার ডকুমেন্ট থেকে নিচের দিকে আসতে শুরু করে এভাবেই উপর থেকে নিচে এবং নিচ থেকে উপরের দিকে যাওয়ার মাধ্যমে কাজ করে এটি মূলত ইভেন্ট ডট টার্গেট হিসেবে বিভিন্ন এলিমেন্ট পাওয়ার জন্য করা হয়.
+-------------------------------------------------------------------------------------------------------
+
 ### 4. What is Event Delegation in JavaScript? Why is it useful?
+
+Answer: জাভাস্ক্রিপ্টে ইভেন্ট Delegation হল একটি ফাংশনের মত এখানে ওয়ান ক্লিক এর মাধ্যমে একটি ফাংশন কে এইচটিএমএল পেইজে কল করা হয় এবং জাভাস্ক্রিপ্টে একটি ফাংশন লেখে তা আইডির মাধ্যমে এক্সেস করা হয় এভাবে খুব কম code লিখে অনেক বেশি কাজ করা যায় এবং এটা খুব ইফিসিয়েন্ট ভাবে কাজ করে এজন্য এটা খুবই গুরুত্বপূর্ণ একটি ফিচার JavaScript are এবং এটা খুবই UseFull.
+-------------------------------------------------------------------------------------------------------
 
 ### 5. What is the difference between preventDefault() and stopPropagation() methods?
 
----
+Answer:preventDefault() হল কোন উপাদানের ডিফল্ট ব্রাউজার একশন বন্ধ করে এটি ইভেন দিকে বুদবুদ হওয়া বন্ধ করে না, যেরকম প্রিভেন্ট ফ্রম সাবমিশন এবং stopPropagation() হল প্যারেন্টের উপাদান গুলিতে এই ইভেন্টটিকে বুদবুদ হওয়া বা ক্যাপচার করা বন্ধ করে একটি ব্রাউজার আচরণ বন্ধ করে না এজন্য দুটি ভিতরে পার্থক্য রয়েছে.
 
+-------------------------------------------------------------------------------------------------------
 
-**Technology Stack:**
+### Using :Technology 
 - HTML
-- CSS (Vanilla/Tailwind/DaisyUI)
-- JavaScript (Vanilla)
+- CSS (Tailwind)
+- JavaScript (Vanilla) 
 
 
---- 
-
-## What to submit: 
-
-1. GitHub Repository Link: 
-2. Live Site Link: 
+### GitHub Repository Link:
+### Live Site Link:
