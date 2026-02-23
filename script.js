@@ -1,10 +1,14 @@
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = "all";
+let currentStatus = "all-filter-btn";
+
 // Step-1 get Count Add
 let total = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
 let rejectedCount = document.getElementById("rejectedCount");
+let sideCount = document.getElementById('sidCount');
+let totalJobs = document.getElementById('totalJobs');
+let sidOf = document.getElementById('sidOf');
 
 // Step-2 Get Toggle button
 const allFilterBtn = document.getElementById("all-filter-btn");
@@ -14,15 +18,36 @@ const rejectedFilterBtn = document.getElementById("rejected-filter-btn");
 const allCardSection = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filteredSection = document.getElementById("filtered-section");
+const deleteBtn = document.getElementById('btn-delete')
 
-// Step-1 Function Count
+// Step-1 Function Count – now shows correct side count based on active tab
 function calculateCount() {
-  total.innerText = allCardSection.children.length;
+  const totalJobsCount = allCardSection.children.length;
+  total.innerText = totalJobsCount;
   interviewCount.innerText = interviewList.length;
   rejectedCount.innerText = rejectedList.length;
+
+  // Set side count according to the current filter
+  if (currentStatus === 'all-filter-btn') {
+    sideCount.innerText = totalJobsCount;
+    totalJobs.classList.add('hidden')
+    sidOf.classList.add('hidden')
+  } else if (currentStatus === 'interview-filter-btn') {
+    sideCount.innerText = interviewList.length;
+    totalJobs.classList.remove('hidden')
+    sidOf.classList.remove('hidden')
+  } else if (currentStatus === 'rejected-filter-btn') {
+    sideCount.innerText = rejectedList.length;
+    totalJobs.classList.remove('hidden');
+    sidOf.classList.remove('hidden');
+
+  }
+
+  totalJobs.innerText = totalJobsCount;
 }
 
-calculateCount();
+calculateCount(); 
+
 // Step-2 Toggle Button
 function toggleStyle(id) {
   allFilterBtn.classList.remove("bg-[#3B82F6]", "text-white");
@@ -51,7 +76,20 @@ function toggleStyle(id) {
     filteredSection.classList.remove("hidden");
     renderRejected();
   }
-}
+
+  calculateCount();
+};
+
+const allCards = document.getElementById("allCards");
+allCards.addEventListener("click", function (e) {
+  if (e.target.closest(".btn-delete")) {
+    const card = e.target.closest(".card");
+    if (card) {
+      card.remove(); 
+      calculateCount();
+    }
+  }
+});
 
 mainContainer.addEventListener("click", function (event) {
   // interview-button event Listener
@@ -251,3 +289,6 @@ function renderRejected() {
     filteredSection.appendChild(div);
   }
 }
+
+
+
