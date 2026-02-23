@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container mx-auto mt-16">
+      <h1 class="text-3xl font-bold text-[#002C5C]">Job Application Tracker</h1>
+      <div class="main-container grid grid-cols-1 md:grid-cols-3 gap-5 p-2 md:p-0 mt-5">
+        <div class="bg-[#FFFFFF] p-5 rounded-lg shadow-xl md:w-[420px]">
+          <p>Total</p>
+          <p id="totalCount" class="text-3xl font-bold text-[#002C5C]">0</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-5 rounded-lg shadow-xl md:w-[420px]">
+          <p>Interview</p>
+          <p id="interviewCount" class="text-3xl font-bold text-[#10B981]">0</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-5 rounded-lg shadow-xl md:w-[420px]">
+          <p>Rejected</p>
+          <p id="rejectedCount" class="text-3xl font-bold text-[#EF4444]">0</p>
+        </div>
+      </div>
+    </header>
+    <hr class="md:w-[75%] mx-auto mt-7 text-[#E6E7E9] md:ml-48 p-2" />
+
+    
+    
+  </body>
+</html>
