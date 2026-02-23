@@ -1,6 +1,6 @@
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = 'all';
+let currentStatus = "all";
 // Step-1 get Count Add
 let total = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
@@ -33,33 +33,28 @@ function toggleStyle(id) {
   interviewFilterBtn.classList.add("bg-[#FFFFFF]", "text-black");
   rejectedFilterBtn.classList.add("bg-[#FFFFFF]", "text-black");
 
-
   const selected = document.getElementById(id);
   currentStatus = id;
 
   selected.classList.remove("bg-[#FFFFFF]", "text-black");
   selected.classList.add("bg-[#3B82F6]", "text-white");
 
-  if(id === 'interview-filter-btn'){
-    
-    allCardSection.classList.add('hidden');
-    filteredSection.classList.remove('hidden');
+  if (id === "interview-filter-btn") {
+    allCardSection.classList.add("hidden");
+    filteredSection.classList.remove("hidden");
     renderInterview();
-  }
-  else if(id === 'all-filter-btn'){
-    allCardSection.classList.remove('hidden');
-    filteredSection.classList.add('hidden')
-  }
-  else if(id === 'rejected-filter-btn'){
-    allCardSection.classList.add('hidden');
-    filteredSection.classList.remove('hidden');
+  } else if (id === "all-filter-btn") {
+    allCardSection.classList.remove("hidden");
+    filteredSection.classList.add("hidden");
+  } else if (id === "rejected-filter-btn") {
+    allCardSection.classList.add("hidden");
+    filteredSection.classList.remove("hidden");
     renderRejected();
   }
 }
 
 mainContainer.addEventListener("click", function (event) {
-
-// interview-button event Listener
+  // interview-button event Listener
   if (event.target.classList.contains("interview-btn")) {
     const parentNode = event.target.parentNode.parentNode;
     const companyName = parentNode.querySelector(".companyName").innerText;
@@ -68,35 +63,36 @@ mainContainer.addEventListener("click", function (event) {
     const status = parentNode.querySelector(".status").innerText;
     const notes = parentNode.querySelector(".notes").innerText;
 
-    parentNode.querySelector(".status").innerText = 'Interview';
+    parentNode.querySelector(".status").innerText = "Interview";
 
     const cardInfo = {
       companyName,
       jobTitle,
       companySalary,
-      status: 'Interview',
+      status: "Interview",
       notes,
     };
 
     const companyExists = interviewList.find(
-      (item) => item.companyName === cardInfo.companyName);
+      (item) => item.companyName === cardInfo.companyName,
+    );
 
     if (!companyExists) {
       interviewList.push(cardInfo);
     }
 
+    rejectedList = rejectedList.filter(
+      (item) => item.companyName !== cardInfo.companyName,
+    );
 
-    rejectedList = rejectedList.filter(item => item.companyName !== cardInfo.companyName);
-
-    if(currentStatus === "rejected-filter-btn"){
-        renderRejected();
+    if (currentStatus === "rejected-filter-btn") {
+      renderRejected();
     }
 
     calculateCount();
-
   }
 
-// rejected-button event Listener
+  // rejected-button event Listener
   if (event.target.classList.contains("rejected-btn")) {
     const parentNode = event.target.parentNode.parentNode;
     const companyName = parentNode.querySelector(".companyName").innerText;
@@ -105,37 +101,53 @@ mainContainer.addEventListener("click", function (event) {
     const status = parentNode.querySelector(".status").innerText;
     const notes = parentNode.querySelector(".notes").innerText;
 
-    parentNode.querySelector(".status").innerText = 'Rejected';
+    parentNode.querySelector(".status").innerText = "Rejected";
 
     const cardInfo = {
       companyName,
       jobTitle,
       companySalary,
-      status: 'Rejected',
+      status: "Rejected",
       notes,
     };
 
     const companyExists = rejectedList.find(
-      (item) => item.companyName === cardInfo.companyName);
+      (item) => item.companyName === cardInfo.companyName,
+    );
 
     if (!companyExists) {
       rejectedList.push(cardInfo);
     }
 
-    interviewList = interviewList.filter(item => item.companyName !== cardInfo.companyName);
+    interviewList = interviewList.filter(
+      (item) => item.companyName !== cardInfo.companyName,
+    );
 
-    if(currentStatus === "interview-filter-btn"){
-        renderInterview()
+    if (currentStatus === "interview-filter-btn") {
+      renderInterview();
     }
 
     calculateCount();
-
   }
 });
 
 // renderInterview create function
 function renderInterview() {
   filteredSection.innerHTML = "";
+
+  if (interviewList.length === 0) {
+    filteredSection.innerHTML = `
+  <div class="container mx-auto mt-10 bg-[#fcfcfc] shadow-xl rounded-md h-[400px] p-3 md:p-0">
+    <div class="flex flex-col justify-center items-center h-full">
+     <img class="mb-5" src="./jobs.png" alt="jobs icon">
+     <div>
+      <h2 class="text-2xl font-bold text-center mb-2 text-[#002C5C]">No jobs available</h2>
+      <p class="text-xl text-center">Check back soon for new job opportunities</p>
+     </div>
+    </div>
+  </div>
+    `;
+  }
 
   for (let interview of interviewList) {
     let div = document.createElement("div");
@@ -175,14 +187,28 @@ function renderInterview() {
           </div>
         </div>
         `;
-        filteredSection.appendChild(div);
-        
+    filteredSection.appendChild(div);
   }
 }
 
 // renderRejected create function
 function renderRejected() {
   filteredSection.innerHTML = "";
+
+
+   if (rejectedList.length === 0) {
+    filteredSection.innerHTML = `
+    <div class="container mx-auto mt-10 bg-[#fcfcfc] shadow-xl rounded-md h-[400px] p-3 md:p-0">
+      <div class="flex flex-col justify-center items-center h-full">
+        <img class="mb-5" src="./jobs.png" alt="jobs icon">
+        <div>
+         <h2 class="text-2xl font-bold text-center mb-2 text-[#002C5C]">No jobs Rejected</h2>
+         <p class="text-xl text-center">Check back soon for new job opportunities</p>
+       </div>
+     </div>
+   </div>
+    `;
+  }
 
   for (let rejected of rejectedList) {
     let div = document.createElement("div");
@@ -222,7 +248,6 @@ function renderRejected() {
           </div>
         </div>
         `;
-        filteredSection.appendChild(div);
-        
+    filteredSection.appendChild(div);
   }
 }
