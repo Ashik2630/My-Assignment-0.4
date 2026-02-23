@@ -6,9 +6,9 @@ let currentStatus = "all-filter-btn";
 let total = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
 let rejectedCount = document.getElementById("rejectedCount");
-let sideCount = document.getElementById('sidCount');
-let totalJobs = document.getElementById('totalJobs');
-let sidOf = document.getElementById('sidOf');
+let sideCount = document.getElementById("sidCount");
+let totalJobs = document.getElementById("totalJobs");
+let sidOf = document.getElementById("sidOf");
 
 // Step-2 Get Toggle button
 const allFilterBtn = document.getElementById("all-filter-btn");
@@ -18,7 +18,7 @@ const rejectedFilterBtn = document.getElementById("rejected-filter-btn");
 const allCardSection = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filteredSection = document.getElementById("filtered-section");
-const deleteBtn = document.getElementById('btn-delete')
+const deleteBtn = document.getElementById("btn-delete");
 
 // Step-1 Function Count – now shows correct side count based on active tab
 function calculateCount() {
@@ -28,25 +28,24 @@ function calculateCount() {
   rejectedCount.innerText = rejectedList.length;
 
   // Set side count according to the current filter
-  if (currentStatus === 'all-filter-btn') {
+  if (currentStatus === "all-filter-btn") {
     sideCount.innerText = totalJobsCount;
-    totalJobs.classList.add('hidden')
-    sidOf.classList.add('hidden')
-  } else if (currentStatus === 'interview-filter-btn') {
+    totalJobs.classList.add("hidden");
+    sidOf.classList.add("hidden");
+  } else if (currentStatus === "interview-filter-btn") {
     sideCount.innerText = interviewList.length;
-    totalJobs.classList.remove('hidden')
-    sidOf.classList.remove('hidden')
-  } else if (currentStatus === 'rejected-filter-btn') {
+    totalJobs.classList.remove("hidden");
+    sidOf.classList.remove("hidden");
+  } else if (currentStatus === "rejected-filter-btn") {
     sideCount.innerText = rejectedList.length;
-    totalJobs.classList.remove('hidden');
-    sidOf.classList.remove('hidden');
-
+    totalJobs.classList.remove("hidden");
+    sidOf.classList.remove("hidden");
   }
 
   totalJobs.innerText = totalJobsCount;
 }
 
-calculateCount(); 
+calculateCount();
 
 // Step-2 Toggle Button
 function toggleStyle(id) {
@@ -78,14 +77,14 @@ function toggleStyle(id) {
   }
 
   calculateCount();
-};
+}
 
 const allCards = document.getElementById("allCards");
 allCards.addEventListener("click", function (e) {
   if (e.target.closest(".btn-delete")) {
     const card = e.target.closest(".card");
     if (card) {
-      card.remove(); 
+      card.remove();
       calculateCount();
     }
   }
@@ -100,8 +99,12 @@ mainContainer.addEventListener("click", function (event) {
     const companySalary = parentNode.querySelector(".companySalary").innerText;
     const status = parentNode.querySelector(".status").innerText;
     const notes = parentNode.querySelector(".notes").innerText;
+    const interviewBtn = parentNode.querySelector(".interview-btn").innerText;
+    const rejectedBtn = parentNode.querySelector(".rejected-btn").innerText;
 
-    parentNode.querySelector(".status").innerText = "Interview";
+    parentNode.querySelector(".status").innerHTML = `
+      <p class="interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md"> Interview </p>
+    `;
 
     const cardInfo = {
       companyName,
@@ -109,6 +112,8 @@ mainContainer.addEventListener("click", function (event) {
       companySalary,
       status: "Interview",
       notes,
+      interviewBtn,
+      rejectedBtn,
     };
 
     const companyExists = interviewList.find(
@@ -138,8 +143,11 @@ mainContainer.addEventListener("click", function (event) {
     const companySalary = parentNode.querySelector(".companySalary").innerText;
     const status = parentNode.querySelector(".status").innerText;
     const notes = parentNode.querySelector(".notes").innerText;
+    const interviewBtn = parentNode.querySelector(".interview-btn").innerText;
+    const rejectedBtn = parentNode.querySelector(".rejected-btn").innerText;
 
-    parentNode.querySelector(".status").innerText = "Rejected";
+    parentNode.querySelector(".status").innerHtml = `
+      <p class="interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md"> Rejected </p>`;
 
     const cardInfo = {
       companyName,
@@ -147,6 +155,8 @@ mainContainer.addEventListener("click", function (event) {
       companySalary,
       status: "Rejected",
       notes,
+      interviewBtn,
+      rejectedBtn,
     };
 
     const companyExists = rejectedList.find(
@@ -201,7 +211,7 @@ function renderInterview() {
             <p class="companySalary text-[#64748B]">
               ${interview.companySalary}
             </p>
-            <button class="status bg-[#EEF4FF] px-2 py-2 ml-2 mt-5">
+            <button class="status bg-[#EEF4FF] ml-2 mt-5 ">
               ${interview.status}
             </button>
             <p  class="notes mt-2 text-[#323B49]">
@@ -211,12 +221,12 @@ function renderInterview() {
               <p
                 class="interview-btn uppercase cursor-pointer font-bold text-[15px] border border-[#10B981] px-4 py-2 text-[#10B981] shadow rounded-md"
               >
-                Interview
+                ${interview.interviewBtn}
               </p>
               <button
                 class="rejected-btn text-[15px] uppercase  font-bold border border-[#EF4444] px-4 py-2 text-[#EF4444] shadow rounded-md"
               >
-                Rejected
+                ${interview.rejectedBtn}
               </button>
             </div>
           </div>
@@ -233,8 +243,7 @@ function renderInterview() {
 function renderRejected() {
   filteredSection.innerHTML = "";
 
-
-   if (rejectedList.length === 0) {
+  if (rejectedList.length === 0) {
     filteredSection.innerHTML = `
     <div class="container mx-auto mt-10 bg-[#fcfcfc] shadow-xl rounded-md h-[400px] p-3 md:p-0">
       <div class="flex flex-col justify-center items-center h-full">
@@ -289,6 +298,3 @@ function renderRejected() {
     filteredSection.appendChild(div);
   }
 }
-
-
-
